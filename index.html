@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal - Música Continua</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #ffb3c6, #ffe0f0);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        button {
+            background-color: #ff66a3;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #ff3385;
+        }
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100vh;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🎵 AUDIO INVISIBLE CON AUTO REPRODUCCIÓN -->
+    <audio id="musica" autoplay loop hidden>
+        <source src="https://github.com/Edward019-hash/Edward019-hash.github.io-Canciones/raw/main/Abraham%20Mateo%20-%20H%C3%A1blame%20Bajito%20(LetraLyrics).MP3" type="audio/mpeg">
+    </audio>
+
+    <h1>💖 Bienvenido 💖</h1>
+    <p>Presiona el botón para ver las flores 🌸</p>
+    <button onclick="cargarFlores()">Ver flores</button>
+
+    <!-- Aquí se carga el segundo HTML -->
+    <iframe id="contenido" src=""></iframe>
+
+    <script>
+        const musica = document.getElementById('musica');
+        musica.play().catch(() => console.log("Autoplay bloqueado, esperando clic..."));
+        window.addEventListener('click', () => musica.play());
+
+        function cargarFlores() {
+            // Ocultar contenido actual y mostrar el iframe
+            document.querySelector('h1').style.display = 'none';
+            document.querySelector('p').style.display = 'none';
+            document.querySelector('button').style.display = 'none';
+            const iframe = document.getElementById('contenido');
+            iframe.style.display = 'block';
+            iframe.src = 'flores.html';
+        }
+    </script>
+
+</body>
+</html>
